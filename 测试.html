@@ -1,0 +1,34 @@
+<script>
+    window.onload = function(){
+        let div = document.getElementById('div');
+        
+        div.addEventListener('click',function(e){
+            console.log(e.target.className)
+        })
+        
+        let div3 = document.createElement('div');
+        div3.setAttribute('class','div3')
+        div3.innerHTML = 'div3';
+        div.appendChild(div3)
+    }
+</script>
+<style>
+.div5 {
+    width:20px;
+    height:20px;
+    border-top:10px solid red;
+    border-right:10px solid blue;
+    border-bottom:10px solid pink;
+    border-left:10px solid black;
+}
+</style>
+
+<body>
+    <div id="div">
+        <div class="div1">div1</div>
+        <div class="div2">div2</div>
+
+
+        <div class="div5">div2</div>
+    </div>
+</body>
