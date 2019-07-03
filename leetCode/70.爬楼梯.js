@@ -31,6 +31,8 @@
 //     return climbStairs(n-1)+climbStairs(n-2)
 
 // };
+
+//  看成一个斐波拉切数列  f(n)=f(n-1)+f(n-2)  初始值： f(1)=1;f(2)=2
 var climbStairs = function (n) {
     let res = 0, x = 1; y = 2
 
