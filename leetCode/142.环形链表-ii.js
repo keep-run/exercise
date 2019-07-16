@@ -97,3 +97,20 @@ var detectCycle = function (head) {
 
 };
 
+//优化代码如下
+var detectCycle = function (head) {
+    let slow = head, fast = head;
+    while (true) {
+        if (!fast || !fast.next) { return null }
+        fast = fast.next.next;
+        slow = slow.next
+        if (fast === slow) { break }
+    }
+    fast = head
+    while (fast !== slow) {
+        fast = fast.next;
+        slow = slow.next
+    }
+    return fast
+};
+

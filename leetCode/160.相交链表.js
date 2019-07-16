@@ -125,3 +125,16 @@ var getIntersectionNode = function (headA, headB) {
     return null
 };
 
+//更简洁的写法
+```
+var getIntersectionNode = function (headA, headB) {
+    let pA = headA;
+    let pB = headB;
+    while (pA !== pB) {
+        pA = pA == null ? headB : pA.next;
+        pB = pB == null ? headA : pB.next;
+    }
+    return pA;
+};
+```
+
