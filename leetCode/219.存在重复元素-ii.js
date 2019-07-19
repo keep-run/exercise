@@ -57,3 +57,17 @@ var containsNearbyDuplicate = function (nums, k) {
     return false
 };
 
+// 方法二： 保存一个浮窗，在浮窗内部找与浮窗尾部相等的元素
+var containsNearbyDuplicate = function (nums, k) {
+    let temp = -1;
+    let start
+    for (let i = 0, len = nums.length; i < len; i++) {
+        start=Math.max(i-k,0)
+        temp = nums.indexOf(nums[i], start)
+        if (temp >= 0 && temp < i) {
+            return true
+        }
+    }
+    return false
+};
+
