@@ -16,27 +16,6 @@ function throttle(fn, wait) {
     }
 }
 
-
-
- const throttle = (fn, time, immedate) => {
-    let timer;
-    return function (...args) {
-      const _this = this;
-      if (!timer) {
-        if (immedate) {
-          fn.apply(_this, args);
-          timer = setTimeout(() => {
-            timer = null;
-          }, time);
-        } else {
-          timer = setTimeout(() => {
-            timer = null;
-            fn.apply(_this, args);
-          }, time);
-        }
-      }
-    };
-  }
 // 立即执行一次。再去定时
 function throttle(fn, wait, immediate) {
     let timer
@@ -56,3 +35,5 @@ function throttle(fn, wait, immediate) {
         }
     }
 }
+
+// 参考 https://github.com/mqyqingfeng/Blog/issues/26 （没有基于定时器实现立即执行）
