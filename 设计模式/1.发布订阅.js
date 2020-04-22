@@ -24,8 +24,6 @@ publish.trigger = function (...args) {
   this.clientList.forEach(event => event.apply(publish, args))
 }
 
-
-
 const consl = function (args) {
   console.log('args:', args)
 }
@@ -37,3 +35,4 @@ publish.listen(consl1)
 publish.remove(consl)
 
 publish.trigger('111')
+
