@@ -23,17 +23,64 @@
 
 /** 第二种：未知待柯里化参数个数 ,最后必须在调用一次*/
 
-function curry(...args){
-    return function(...argsNew){
-          if(argsNew.length>0){
-              args=args.concat(argsNew)
-              return curry.apply(this,args)
-          }else{
-              return args.reduce((pre,cur)=>{
-                  return pre+cur
-              })
-          }
+function curry(...args) {
+    return function (...argsNew) {
+        if (argsNew.length > 0) {
+            args = args.concat(argsNew)
+            return curry.apply(this, args)
+        } else {
+            return args.reduce((pre, cur) => {
+                return pre + cur
+            })
+        }
     }
 }
 
 console.log(curry(1)(2)())
+
+
+/** 分离一个函数参数 */
+
+function curry1(fn) {
+    let allArgs = []
+    function next(...args) {
+        if (args.length > 0) {
+            allArgs = [...allArgs, ...args]
+            return next
+        } else {
+            return fn.apply(null, allArgs)
+        }
+    }
+    return next
+}
+function add(...args) {
+    return args.reduce((pre, cur) => pre + cur)
+}
+
+const demo=curry1(add)
+
+console.log('------curry1------',demo(1,3)(1,5)(6)())
+
+/* 上边的实现方法是传了空参数的时候，输出结果。怎么去掉这一步呢。
+  其实 js在获取值的时候，会隐士依次调用valueOf和toString.当有一个返回的时候，就返回原来的值
+*/
+
+function curry2(fn){
+  let allArgs=[]
+  function next (...args){
+    allArgs=[...allArgs,...args]
+    return next
+  }
+  next.toString=function(){
+      return fn.apply(null,allArgs)
+  }
+  return next
+}
+
+function add2(...args) {
+    return args.reduce((pre, cur) => pre + cur)
+}
+
+const demo2=curry2(add2)
+
+console.log('------curry2------',demo2(1,3)(1,10,5)(6))
