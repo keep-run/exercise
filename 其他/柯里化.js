@@ -84,3 +84,6 @@ function add2(...args) {
 const demo2=curry2(add2)
 
 console.log('------curry2------',demo2(1,3)(1,10,5)(6))
+
+
+参考文献：https://juejin.im/post/5b561426518825195f499772

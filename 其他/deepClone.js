@@ -1,3 +1,6 @@
+
+// 参考文章   https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1
+
 /** 方法一：基于JSON.stringify和JSON.parse。 缺点是：如果复制的对象中是函数，则会丢失。
  * 原因是 stringify会将参数转化成字符串，而参数不能接受函数 */
 
