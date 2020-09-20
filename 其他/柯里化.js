@@ -86,4 +86,24 @@ const demo2=curry2(add2)
 console.log('------curry2------',demo2(1,3)(1,10,5)(6))
 
 
-参考文献：https://juejin.im/post/5b561426518825195f499772
+function curry3(fn){
+    let args=[]
+    function next(...params){
+      args=[...args,...params]
+      return next
+    }
+    next.toString=function(){
+      console.log('2222222')
+      return fn(...args)
+    }
+    return next
+  }
+  
+  let add3=curry3(function(...items){
+    return items.reduce((prev,cur)=>{return prev+cur},0)
+  })
+  
+//   let res=add(1)(2,3)
+  console.log('------curry3------',add3(1,3)(1,10,5)(6))
+
+// 参考文献：https://juejin.im/post/5b561426518825195f499772
